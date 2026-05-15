@@ -17,12 +17,12 @@ eleventyComputed:
   "@context": "https://schema.org",
   "@type": "CreativeWork",
   "name": {{ project.title | dump | safe }},
-  "url": "{{ site.url }}{{ page.url | url }}",
+  "url": "{{ site.url }}{{ page.url }}",
   "description": {{ (project.description or '') | dump | safe }},
   {% if project.date %}"datePublished": "{{ project.date }}",{% endif %}
   "image": {
     "@type": "ImageObject",
-    "url": "{{ site.url }}{{ ('/' + project.hero) | url }}"
+    "url": "{{ site.url }}{{ ('/' + project.hero) }}"
     {% if project.heroWidth %},"width": {{ project.heroWidth }}{% endif %}
     {% if project.heroHeight %},"height": {{ project.heroHeight }}{% endif %}
   },
@@ -35,8 +35,8 @@ eleventyComputed:
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}{{ '/' | url }}" },
-    { "@type": "ListItem", "position": 2, "name": "Projects", "item": "{{ site.url }}{{ '/projects/' | url }}" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}{{ '/' }}" },
+    { "@type": "ListItem", "position": 2, "name": "Projects", "item": "{{ site.url }}{{ '/projects/' }}" },
     { "@type": "ListItem", "position": 3, "name": {{ project.title | dump | safe }} }
   ]
 }
@@ -51,9 +51,9 @@ eleventyComputed:
           <div class="background-image d-flex align-items-center gradient gradient-up-dark z-index-1 p-0" data-vertical="center" data-horizontal="center">
             <div class="image">
               <picture>
-                <source srcset="{{ ('/' + project.hero + '.webp') | url }}" type="image/webp">
+                <source srcset="{{ ('/' + project.hero + '.webp') }}" type="image/webp">
                 <img fetchpriority="high" decoding="async"
-                  src="{{ ('/' + project.hero) | url }}"
+                  src="{{ ('/' + project.hero) }}"
                   alt="{{ heroAlt }}"
                   {% if project.heroWidth %}width="{{ project.heroWidth }}"{% endif %}
                   {% if project.heroHeight %}height="{{ project.heroHeight }}"{% endif %}
@@ -103,9 +103,9 @@ eleventyComputed:
               <div class="col-12 col-md-6">
                 <figure class="m-0">
                   <picture>
-                    <source srcset="{{ ('/' + img.url + '.webp') | url }}" type="image/webp">
+                    <source srcset="{{ ('/' + img.url + '.webp') }}" type="image/webp">
                     <img
-                      src="{{ ('/' + img.url) | url }}"
+                      src="{{ ('/' + img.url) }}"
                       alt="{{ contextAlt }} — image {{ loop.index }} of {{ project.images.length }}"
                       {% if img.width %}width="{{ img.width }}"{% endif %}
                       {% if img.height %}height="{{ img.height }}"{% endif %}
