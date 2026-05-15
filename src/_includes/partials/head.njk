@@ -1,0 +1,74 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+{% set pageTitle %}{% if title and (site.title not in title) %}{{ title }} - {{ site.title }}{% elif title %}{{ title }}{% else %}{{ site.title }} - {{ site.tagline }}{% endif %}{% endset %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ description or site.description }}">
+
+<link rel="canonical" href="{{ page.url | url }}">
+
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:url" content="{{ page.url | url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+{% if ogImage %}<meta property="og:image" content="{{ site.url }}{{ ogImage | url }}">
+{% if ogImageWidth %}<meta property="og:image:width" content="{{ ogImageWidth }}">{% endif %}
+{% if ogImageHeight %}<meta property="og:image:height" content="{{ ogImageHeight }}">{% endif %}
+<meta property="og:image:alt" content="{{ title or site.title }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ pageTitle }}">
+<meta name="twitter:description" content="{{ description or site.description }}">
+{% if ogImage %}<meta name="twitter:image" content="{{ site.url }}{{ ogImage | url }}">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}{{ '/' | url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ '/assets/img/shared/Cecilia-Pozzi-Logo-Pie-de-Pagina.png' | url }}"
+      },
+      "email": "{{ site.email }}",
+      "address": "{{ site.address }}",
+      "sameAs": ["{{ site.instagram }}"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}{{ '/' | url }}",
+      "name": "{{ site.title }}",
+      "description": "{{ site.tagline }}",
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "{{ site.lang }}"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="{{ '/assets/img/shared/cropped-favicon512-32x32.png' | url }}" sizes="32x32">
+<link rel="icon" href="{{ '/assets/img/shared/cropped-favicon512-192x192.png' | url }}" sizes="192x192">
+<link rel="apple-touch-icon" href="{{ '/assets/img/shared/cropped-favicon512-180x180.png' | url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap">
+
+<link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
+
+{% if site.gtmId %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtmId }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.gtmId }}');
+</script>
+{% endif %}

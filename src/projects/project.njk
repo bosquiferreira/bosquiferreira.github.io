@@ -1,0 +1,12 @@
+---
+pagination:
+  data: projects
+  size: 1
+  alias: project
+layout: layouts/project.njk
+permalink: "/projects/{{ project.slug }}/"
+eleventyComputed:
+  title: "{{ project.title }}"
+  description: "{{ project.description }}"
+  ogImage: "/{{ project.hero }}"
+---

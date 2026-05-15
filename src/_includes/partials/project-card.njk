@@ -1,0 +1,19 @@
+<div class="col-12 col-md-6 col-lg-4 mb-32">
+  <a href="{{ ('/projects/' + project.slug + '/') | url }}" class="d-block text-decoration-none text-dark">
+    <figure class="m-0 mb-16 overflow-hidden">
+      <picture>
+        <source srcset="{{ ('/' + project.hero + '.webp') | url }}" type="image/webp">
+        <img
+          src="{{ ('/' + project.hero) | url }}"
+          alt="{{ project.title }}{% if project.location %} — {{ project.location }}{% endif %}"
+          {% if project.heroWidth %}width="{{ project.heroWidth }}"{% endif %}
+          {% if project.heroHeight %}height="{{ project.heroHeight }}"{% endif %}
+          loading="lazy"
+          decoding="async"
+          class="w-100 h-auto">
+      </picture>
+    </figure>
+    <h3 class="h4 ff-secondary fw-light mb-4">{{ project.title }}</h3>
+    {% if project.subtitle %}<p class="text-sm fw-light mb-0">{{ project.subtitle }}</p>{% endif %}
+  </a>
+</div>

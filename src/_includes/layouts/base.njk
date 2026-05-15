@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+{% include "partials/head.njk" %}
+</head>
+{%- set _bodyClasses -%}
+wp-custom-logo wp-theme-calacatta wpb-js-composer js-comp-ver-8.6.1 vc_responsive {{ bodyClass or '' }}
+{%- endset -%}
+<body class="{{ _bodyClasses }}">
+{% include "partials/header.njk" %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "partials/footer.njk" %}
+{% include "partials/scripts.njk" %}
+</body>
+</html>

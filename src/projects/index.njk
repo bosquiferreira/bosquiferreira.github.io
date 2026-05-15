@@ -1,0 +1,20 @@
+---
+bodyClass: "wp-singular page-template-default page proyectos"
+layout: layouts/base.njk
+title: Proyectos
+description: Selección de proyectos de interiorismo realizados en Barcelona y alrededores.
+permalink: /projects/
+---
+<section id="content">
+  <div class="container py-72 py-lg-120">
+    <header class="mb-48 mb-lg-72 text-center">
+      <h1 class="h1 ff-secondary fw-light mb-16">Proyectos</h1>
+      <p class="text-lg fw-light w-lg-50 mx-auto">{{ description }}</p>
+    </header>
+    <div class="row">
+      {% for project in projects %}
+        {% include "partials/project-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
